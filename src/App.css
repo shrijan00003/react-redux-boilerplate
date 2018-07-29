@@ -26,3 +26,83 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/* table design ------ starts here------- */
+
+/* spacing */
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+
+thead th:nth-child(1) {
+  width: 20%;
+}
+
+thead th:nth-child(2) {
+  width: 40%;
+}
+
+thead th:nth-child(3) {
+  width: 45%;
+}
+
+th, td {
+  padding: 10px;
+}
+/* typography */
+
+html {
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+}
+
+thead th, tfoot th {
+  font-family: 'Rock Salt', cursive;
+}
+
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+tfoot th {
+  text-align: right;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: lightblue;
+}
+
+tbody tr:nth-child(even) {
+  background-color: lightcyan;
+}
+
+table {
+  background-color: lightslategray;
+  color: black;
+}
+/* table desing ends here-------------- */
+
+/* search div design */
+.todo-search-row{
+  margin: 0 auto;
+  text-align: center;
+}
+/* select box for page size */
+.s-page-size{
+  padding: 10px;
+}
+
+.i-search-query{
+  width: 400px;
+  padding: 8px;
+}
