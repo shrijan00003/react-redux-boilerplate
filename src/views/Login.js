@@ -1,11 +1,6 @@
-import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import loginForm from '../components/stateless/loginForm';
 
-export default class Login extends Component {
-  render() {
-    return (
-      <div>
-          hello from login
-      </div>
-    )
-  }
-}
+const EnhancedLogin = connect()(loginForm);
+
+export default EnhancedLogin;

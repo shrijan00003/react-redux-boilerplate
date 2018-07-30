@@ -1,13 +1,6 @@
-import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import registerForm from '../components/stateless/registerForm';
 
-class Register extends Component {
-  render() {
-    return (
-      <div>
-        hello from regiseter
-      </div>
-    )
-  }
-}
+const EnhancedRegister = connect()(registerForm);
 
-export default Register
+export default EnhancedRegister;

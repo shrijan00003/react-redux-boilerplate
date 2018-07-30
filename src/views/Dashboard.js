@@ -12,19 +12,21 @@ class Dashboard extends Component {
       query : ''
     }
   }
+  
   componentWillMount() {
-    this.props.fetchTodos(); //calling action fetchTodos
+    this.props.fetchTodos(this.state); //calling action fetchTodos
   }
-  
-  onChangeHandler=(e)=>{
-    this.setState({
-      [e.target.name]: e.target.value
-    })
+  onChangeHandler=  (e)=>{
+    //  this.setState({
+    //   [e.target.name]: e.target.value
+    // })
+
+    this.props.fetchTodos({
+      pageSize : (e.target.name === 'pageSize')? e.target.value : this.state.pageSize,
+      query : (e.target.name === 'query')? e.target.value : this.state.query
+    }); //calling action fetchTodos
   }
-  componentWillReceiveProps(nextProps){
-    console.log(this.props)
-  }
-  
+ 
   render() {
     return (
       <div>
@@ -49,11 +51,12 @@ class Dashboard extends Component {
           </thead>
           <tbody>
             {
+              (this.props.todos)?
               this.props.todos.map(
                 (todo, index) => (
                   <TodoItem key={index} {...todo} />
                 )
-              )
+              ):''
             }
           </tbody>
         </table>
@@ -68,7 +71,6 @@ Dashboard.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  todos: state.todos.allTodos,
-  filter : state.todos.filters
+  todos: state.todos.allTodos
 })
 export default connect(mapStateToProps, { fetchTodos })(Dashboard);
