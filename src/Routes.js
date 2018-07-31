@@ -6,17 +6,21 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import Login from './views/Login';
+import Logout from './views/Logout';
 import Home from './views/Home';
 import Register from './views/Register';
+import Dashboard from './views/Dashboard';
 
 import createBrowserHistory from 'history/createBrowserHistory';
+import { LOCAL_REFRESH_TOKEN } from './constants/tokens';
 
 const history = createBrowserHistory();
 
 const withIsLoggedIn = compose(
   withRouter,
   connect(state => ({
-    isLoggedIn: false, //it will be taken from state //state.user.id !== undefined,
+    isLoggedIn:
+      state.login.isLoggedIn || localStorage.getItem(LOCAL_REFRESH_TOKEN),
   }))
 );
 
@@ -53,6 +57,8 @@ const Routes = () => (
       <PublicRoute exact path={ROUTE.LOGIN} component={Login} />
       <PublicRoute exact path={ROUTE.REGISTER} component={Register} />
       <PrivateRoute exact path={ROUTE.ROOT} component={Home} />
+      <PrivateRoute exact path={ROUTE.DASHBOARD} component={Dashboard} />
+      <PrivateRoute exact path={ROUTE.LOGOUT} component={Logout} />
     </Switch>
   </Router>
 );
