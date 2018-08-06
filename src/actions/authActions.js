@@ -13,8 +13,11 @@ export const setLoginSuccess = (user = {}, token = {}) => ({
   },
 });
 
-export const setLoginError = () => ({
+export const setLoginError = errorMsg => ({
   type: ACTIONS.LOGIN_REJECTED,
+  payload: {
+    errorMsg,
+  },
 });
 
 export const refreshLogin = refreshToken => ({

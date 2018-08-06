@@ -2,6 +2,7 @@ import { ACTIONS } from '../../constants/login';
 
 const INITIAL_STATE = {
   isLoggedIn: false,
+  loginErrorMsg: null,
   token: {
     access: null,
     refresh: null,
@@ -27,6 +28,7 @@ const loginReducer = (state = INITIAL_STATE, action) => {
         ...state,
         ...state.login,
         isLoggedIn: false,
+        loginErrorMsg: action.payload.errorMsg,
         user: {},
       };
 

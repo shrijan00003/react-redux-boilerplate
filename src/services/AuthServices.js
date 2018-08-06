@@ -6,16 +6,27 @@ import {
 } from '../constants/tokens';
 
 export async function login(email, password) {
+  console.log('-------------', email, password);
   let response = await HTTP.post(`auth/login`, {
     data: {
       email,
       password,
     },
   });
-  console.log(response, 'from login ');
-  if (response.status === 200) {
-    storeAllInformation(response.data);
-    return response;
+
+  if (response) {
+    if (response.status === 403) {
+      console.log('username and credential not matched');
+    }
+    if (response.status === 200) {
+      storeAllInformation(response.data);
+      return response;
+    }
+  } else {
+    console.log(response);
+    return {
+      error: 'username and password donot match',
+    };
   }
 }
 
@@ -55,12 +66,11 @@ export async function refresh(userId, refreshToken) {
 export async function logout() {
   try {
     console.log('before ');
-    await HTTP.interceptorHandler();
     console.log('after');
     let response = await HTTP.post(`auth/logout`, {
       data: {
-        user_id: getUserId(),
-        refresh_token: getRefreshToken(),
+        userId: getUserId(),
+        refreshToken: getRefreshToken(),
       },
     });
     if (response.status === 200) {

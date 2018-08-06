@@ -25,7 +25,6 @@ export async function getTodosById(props) {
   console.log('userid', userId);
 
   try {
-    // await HTTP.interceptorHandler();
     let response = await HTTP.get(`todos/${userId}`, {
       params: {
         title: props.query,

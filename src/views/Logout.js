@@ -6,7 +6,7 @@ import * as AuthService from '../services/AuthServices';
 class Logout extends React.Component {
   async componentDidMount() {
     await AuthService.logout();
-    this.props.setLogoutSuccess();
+    await this.props.setLogoutSuccess();
   }
   render() {
     return <div>This is Logged Out screen please sign in again</div>;
@@ -19,7 +19,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispach => {
   return {
-    setLogoutSuccess: (user, token) => dispach(setLogoutSuccess()),
+    setLogoutSuccess: () => dispach(setLogoutSuccess()),
   };
 };
 

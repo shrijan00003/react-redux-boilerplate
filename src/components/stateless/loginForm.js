@@ -18,6 +18,7 @@ let userEmail = null;
 let password = null;
 
 export default ({
+  errorMsg = null,
   isLoggedIn = false,
   setLoginSuccess = f => f,
   setLoginError = f => f,
@@ -29,9 +30,8 @@ export default ({
         onSubmit={async e => {
           e.preventDefault();
           const res = await AuthService.login(userEmail, password);
-          console.log(res.data);
-
-          if (res) {
+          console.log(res);
+          if (!res.error) {
             const token = {
               accessToken: res.data.accessToken,
               refreshToken: res.data.refreshToken,
@@ -42,7 +42,8 @@ export default ({
             };
             setLoginSuccess(user, token);
           } else {
-            setLoginError();
+            console.log(res.error);
+            setLoginError(res.error);
           }
         }}
       >
@@ -72,6 +73,7 @@ export default ({
         <button type="submit" className="button">
           Login
         </button>
+        <div>{errorMsg ? <p style={{ color: 'red' }}>{errorMsg}</p> : ''}</div>
         <p>Not Registerd Yet</p>
         <RegisterButton />
       </form>
