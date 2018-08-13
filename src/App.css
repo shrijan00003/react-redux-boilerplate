@@ -23,6 +23,132 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* table design ------ starts here------- */
+
+/* spacing */
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+
+thead th:nth-child(1) {
+  width: 20%;
+}
+
+thead th:nth-child(2) {
+  width: 40%;
+}
+
+thead th:nth-child(3) {
+  width: 45%;
+}
+
+th,
+td {
+  padding: 10px;
+}
+/* typography */
+
+html {
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+}
+
+thead th,
+tfoot th {
+  font-family: 'Rock Salt', cursive;
+}
+
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+tfoot th {
+  text-align: right;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: lightblue;
+}
+
+tbody tr:nth-child(even) {
+  background-color: lightcyan;
+}
+
+table {
+  background-color: lightslategray;
+  color: black;
+}
+/* table desing ends here-------------- */
+
+/* search div design */
+.todo-search-row {
+  margin: 0 auto;
+  text-align: center;
+}
+/* select box for page size */
+.s-page-size {
+  padding: 10px;
+}
+
+.i-search-query {
+  width: 400px;
+  padding: 8px;
+}
+
+/* login form desing */
+.todo-form {
+  margin: 0 auto;
+  width: 520px;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  text-align: center;
+}
+.login-form div + div {
+  margin-top: 1em;
+}
+label {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+  margin-right: 20px;
+}
+
+input {
+  font: 1em sans-serif;
+  width: 300px;
+  box-sizing: border-box;
+  border: 1px solid #999;
+  padding: 5px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #000;
+}
+.s-button {
+  padding-left: 10px;
+  margin: 5px;
+  text-align: center;
+}
+.form-row {
+  padding: 10px;
 }
